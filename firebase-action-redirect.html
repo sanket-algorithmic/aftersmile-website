@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting...</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    .container {
+      padding: 30px;
+      max-width: 90%;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 24px;
+    }
+
+    a#manual {
+      display: inline-block;
+      padding: 10px 24px;
+      background-color: #00c6ff;
+      color: #fff;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+    }
+
+    a#manual:hover {
+      background-color: #0072ff;
+    }
+
+    .loader {
+      border: 6px solid rgba(255, 255, 255, 0.3);
+      border-top: 6px solid #ffffff;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    footer {
+      position: absolute;
+      bottom: 20px;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.6);
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="mainContainer">
+    <h1>Processing...</h1>
+    <div class="loader"></div>
+    <p>Please wait while we redirect you...</p>
+  </div>
+
+  <footer>© 2025 After Smile</footer>
+
+  <script>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const mode = params.get('mode');
+      const oobCode = params.get('oobCode');
+      const container = document.getElementById('mainContainer');
+
+      const appLink = oobCode
+        ? `myapp://reset-password?oobCode=${encodeURIComponent(oobCode)}`
+        : `myapp://login`;
+
+      if (mode === 'verifyEmail') {
+        container.innerHTML = `
+          <h1>🎉 Email Verified Successfully!</h1>
+          <p>Your email has been verified.<br/>You can now open the app and continue.</p>
+          <a id="manual" href="${appLink}">Open in App</a>
+          <div class="loader"></div>
+        `;
+
+        setTimeout(() => {
+          window.location.href = appLink;
+        }, 300);
+      } else if (mode === 'resetPassword' && oobCode) {
+        container.innerHTML = `
+          <h1>🔒 Reset Your Password</h1>
+          <p>Please tap the button below to open the app and set your new password.</p>
+          <a id="manual" href="${appLink}">Open in App</a>
+          <div class="loader"></div>
+        `;
+
+        setTimeout(() => {
+          window.location.href = appLink;
+        }, 300);
+      } else {
+        container.innerHTML = "<h1>Invalid Link</h1><p>Missing or incorrect verification information.</p>";
+      }
+    })();
+  </script>
+</body>
+</html>
