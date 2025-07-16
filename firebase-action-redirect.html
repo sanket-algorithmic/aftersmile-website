@@ -84,28 +84,54 @@
 
   <footer>© 2025 After Smile</footer>
 
+  <!-- ✅ Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
+
   <script>
-    (function () {
+    // ✅ Your Firebase Config
+    const firebaseConfig = {
+      apiKey: "AIzaSyCisLjMhiBakZCG_LlNwblGzjvs8objdR4",
+      authDomain: "appone-102db.firebaseapp.com",
+      projectId: "appone-102db",
+      storageBucket: "appone-102db.firebasestorage.app",
+      messagingSenderId: "789505636465",
+      appId: "1:789505636465:web:2321297132ff8e3dcc43d0"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    (async function () {
       const params = new URLSearchParams(window.location.search);
       const mode = params.get('mode');
       const oobCode = params.get('oobCode');
       const container = document.getElementById('mainContainer');
 
       const appLink = oobCode
-        ? `myapp://reset-password?oobCode=${encodeURIComponent(oobCode)}`
-        : `myapp://login`;
+          ? `myapp://reset-password?mode=${encodeURIComponent(mode)}&oobCode=${encodeURIComponent(oobCode)}`
+          : `myapp://login`;
 
-      if (mode === 'verifyEmail') {
-        container.innerHTML = `
-          <h1>🎉 Email Verified Successfully!</h1>
-          <p>Your email has been verified.<br/>You can now open the app and continue.</p>
-          <a id="manual" href="${appLink}">Open in App</a>
-          <div class="loader"></div>
-        `;
 
-        setTimeout(() => {
-          window.location.href = appLink;
-        }, 300);
+
+      if (mode === 'verifyEmail' && oobCode) {
+        try {
+          await auth.applyActionCode(oobCode);
+          container.innerHTML = `
+            <h1>🎉 Email Verified Successfully!</h1>
+            <p>Your email has been verified.<br/>You can now open the app and continue.</p>
+            <a id="manual" href="${appLink}">Open in App</a>
+            <div class="loader"></div>
+          `;
+          setTimeout(() => {
+            window.location.href = appLink;
+          }, 1000);
+        } catch (error) {
+          container.innerHTML = `
+            <h1>⚠️ Verification Failed</h1>
+            <p>${error.message}</p>
+          `;
+        }
       } else if (mode === 'resetPassword' && oobCode) {
         container.innerHTML = `
           <h1>🔒 Reset Your Password</h1>
@@ -113,10 +139,9 @@
           <a id="manual" href="${appLink}">Open in App</a>
           <div class="loader"></div>
         `;
-
         setTimeout(() => {
           window.location.href = appLink;
-        }, 300);
+        }, 1000);
       } else {
         container.innerHTML = "<h1>Invalid Link</h1><p>Missing or incorrect verification information.</p>";
       }
