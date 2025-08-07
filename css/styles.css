@@ -439,10 +439,10 @@ body {
 }
 
 .effective-date {
-  font-size: 1rem;
+  font-size: 1.5rem;
   color: #666;
   margin-bottom: 2rem;
-  font-style: italic;
+  /* font-style: italic; */
 }
 
 .policy-section {
@@ -468,6 +468,10 @@ body {
 
 .policy-section li {
   margin-bottom: 0.5rem;
+}
+
+.privacyMail {
+  color: #333;
 }
 
 /* Blog styles */
