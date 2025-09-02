@@ -108,9 +108,13 @@
       const oobCode = params.get('oobCode');
       const container = document.getElementById('mainContainer');
 
+      // const appLink = oobCode
+      //     ? `myapp://reset-password?mode=${encodeURIComponent(mode)}&oobCode=${encodeURIComponent(oobCode)}`
+      //     : `myapp://login`;
+
       const appLink = oobCode
-          ? `myapp://reset-password?mode=${encodeURIComponent(mode)}&oobCode=${encodeURIComponent(oobCode)}`
-          : `myapp://login`;
+          ? `https://aftersmile.app/resetPassword?oobCode=${encodeURIComponent(oobCode)}`
+          : `https://aftersmile.app/login`;
 
 
 
