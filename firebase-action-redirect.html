@@ -112,11 +112,13 @@
       //     ? `myapp://reset-password?mode=${encodeURIComponent(mode)}&oobCode=${encodeURIComponent(oobCode)}`
       //     : `myapp://login`;
 
-      const appLink = oobCode
-          ? `https://aftersmile.app/resetPassword?oobCode=${encodeURIComponent(oobCode)}`
-          : `https://aftersmile.app/login`;
+      // const appLink = oobCode
+      //     ? `https://aftersmile.app/resetPassword?oobCode=${encodeURIComponent(oobCode)}`
+      //     : `https://aftersmile.app/login`;
 
-
+      var appLink = oobCode
+          ? `aftersmile://resetPassword?oobCode=${encodeURIComponent(oobCode)}`
+          : `aftersmile://login`;    
 
       if (mode === 'verifyEmail' && oobCode) {
         try {
