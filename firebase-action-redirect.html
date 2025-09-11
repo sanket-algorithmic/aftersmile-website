@@ -116,9 +116,13 @@
       //     ? `https://aftersmile.app/resetPassword?oobCode=${encodeURIComponent(oobCode)}`
       //     : `https://aftersmile.app/login`;
 
-      var appLink = oobCode
-          ? `aftersmile://resetPassword?oobCode=${encodeURIComponent(oobCode)}`
-          : `aftersmile://login`;    
+      // var appLink = oobCode
+      //     ? `aftersmile://resetPassword?oobCode=${encodeURIComponent(oobCode)}`
+      //     : `aftersmile://login`; 
+          
+      var appLinkForLogin = `aftersmile://login`;
+      
+      var appLinkForReset = `aftersmile://resetPassword?oobCode=${encodeURIComponent(oobCode)}`;
 
       if (mode === 'verifyEmail' && oobCode) {
         try {
@@ -126,7 +130,7 @@
           container.innerHTML = `
             <h1>🎉 Email Verified Successfully!</h1>
             <p>Your email has been verified.<br/>You can now open the app and continue.</p>
-            <a id="manual" href="${appLink}">Open in App</a>
+            <a id="manual" href="${appLinkForLogin}">Open in App</a>
             <div class="loader"></div>
           `;
           //setTimeout(() => {
@@ -142,7 +146,7 @@
         container.innerHTML = `
           <h1>🔒 Reset Your Password</h1>
           <p>Please tap the button below to open the app and set your new password.</p>
-          <a id="manual" href="${appLink}">Open in App</a>
+          <a id="manual" href="${appLinkForReset}">Open in App</a>
           <div class="loader"></div>
         `;
         //setTimeout(() => {
