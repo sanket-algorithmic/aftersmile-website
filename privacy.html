@@ -29,7 +29,7 @@
   <ul>
     <li>AfterSmile does not collect, store, or transmit any user or patient data to external servers or third parties.</li>
     <li>All captured images remain stored exclusively on the user’s device. The application does not perform cloud backups or remote syncing.</li>
-    <li>Automatic facial blurring is applied locally at the point of image capture to support patient confidentiality and prevent identity exposure.</li>
+    <li>AfterSmile uses on-device face detection technology to apply automatic blur effects that protect patient privacy. The app does not collect, extract, or store any face data, facial features, or biometric information. Face detection is performed using Google ML Kit for Flutter, which runs entirely on your device. The detection process identifies face locations temporarily in device memory during image capture so that a blur effect can be applied to those regions. Once the blur is applied, all detection information is immediately discarded. No facial data is transmitted to external servers, Google, or any third parties. Only the final blurred photograph is saved to your device's local storage.</li>
     <li>Users are responsible for adhering to relevant privacy laws and securing informed consent from patients when capturing and/or sharing images.</li>
     <li>We do not access, analyze, or share any data processed through the application.</li>
     <li>Should this policy be revised in the future, users will be notified through official update channels within the application.</li>
