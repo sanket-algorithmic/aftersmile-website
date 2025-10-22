@@ -1,0 +1,12 @@
+# robots.txt for AfterSmile
+
+# Allow all search engines
+User-agent: *
+Allow: /
+
+# Disallow Firebase action pages (auth redirects, etc)
+Disallow: /firebase-action-redirect.html
+Disallow: /apple-coming-soon.html
+
+# Sitemap location
+Sitemap: https://aftersmile.com/sitemap.xml
