@@ -1,26 +1,50 @@
 // Blog posts data
 const blogPosts = [
   {
-    title: "Brain Rot: From Thoreau to TikTok - Oxford's 2024 Word of the Year",
-    date: "2025-08-04",
-    excerpt:
-      "Discover the fascinating journey of 'brain rot' from Henry David Thoreau's 1854 coinage to Oxford's 2024 Word of the Year. Learn about its meaning, Gen Z impact, and societal effects.",
-    url: "posts/2025-08-04-brain-rot-oxford-word-year.html",
-    readTime: "8 min",
-    author: "Yoni Smolyar",
+    title: "The Portfolio Effect: Why Your Best Work Is Your Best Marketing",
+    date: "2025-01-22",
+    excerpt: "How visual proof increases case acceptance by up to 73% and attracts premium patients who say yes.",
+    url: "posts/2025-01-22-portfolio-effect.html",
+    readTime: "2 min",
+    author: "AfterSmile Team",
     authorUrl: "../author.html",
   },
   {
-    title: "The Complete Guide to Digital Detox",
-    date: "2025-08-02",
-    excerpt:
-      "Learn how to successfully complete a digital detox and reset your relationship with technology.",
-    url: "posts/2025-08-02-digital-detox-guide.html",
-    readTime: "5 min",
-    author: "Yoni Smolyar",
+    title: "5 Photography Secrets That Convert Consultations Into Cases",
+    date: "2025-01-20",
+    excerpt: "Simple techniques that transform good photos into powerful marketing assets that close deals.",
+    url: "posts/2025-01-20-photography-secrets.html",
+    readTime: "2 min",
+    author: "AfterSmile Team",
     authorUrl: "../author.html",
   },
-  // Add new blog posts here
+  {
+    title: "Why Showing Beats Telling Every Time",
+    date: "2025-01-18",
+    excerpt: "The psychology behind visual proof and how it eliminates objections instantly.",
+    url: "posts/2025-01-18-visual-proof-psychology.html",
+    readTime: "2 min",
+    author: "AfterSmile Team",
+    authorUrl: "../author.html",
+  },
+  {
+    title: "Build Your Portfolio in 30 Days: The Action Plan",
+    date: "2025-01-15",
+    excerpt: "A simple daily routine that creates a stunning portfolio attracting ideal patients.",
+    url: "posts/2025-01-15-30-day-portfolio-plan.html",
+    readTime: "2 min",
+    author: "AfterSmile Team",
+    authorUrl: "../author.html",
+  },
+  {
+    title: "Turn Your Cases Into Social Media Growth",
+    date: "2025-01-12",
+    excerpt: "How to showcase transformations on Instagram and Facebook to build a waiting list of dream patients.",
+    url: "posts/2025-01-12-social-media-growth.html",
+    readTime: "2 min",
+    author: "AfterSmile Team",
+    authorUrl: "../author.html",
+  },
 ];
 
 // Function to format date
