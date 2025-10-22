@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AfterSmile Team - About Us</title>
+    <meta name="description"
+        content="Learn about the AfterSmile team, committed to helping dental professionals build portfolios that showcase their artistry and grow their practices.">
+    <meta name="keywords" content="AfterSmile team, dental photography, patient privacy, dental technology">
+
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+    <!-- open graph / facebook -->
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="author.html">
+    <meta property="og:title" content="AfterSmile Team - About Us">
+    <meta property="og:description"
+        content="Learn about the AfterSmile team, committed to helping dental professionals protect patient privacy through innovative photography solutions.">
+    <meta property="og:image" content="put link to author image">
+    <meta property="profile:first_name" content="Yoni">
+    <meta property="profile:last_name" content="Smolyar">
+
+    <!-- twitter -->
+    <meta property="twitter:card" content="summary">
+    <meta property="twitter:url" content="author.html">
+    <meta property="twitter:title" content="AfterSmile Team - About Us">
+    <meta property="twitter:description"
+        content="Learn about the AfterSmile team, committed to helping dental professionals protect patient privacy through innovative photography solutions.">
+    <meta property="twitter:image" content="put link to author image">
+
+    <!-- canonical url -->
+    <link rel="canonical" href="author.html">
+
+    <!-- structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "AfterSmile",
+        "url": "https://aftersmile.com",
+        "description": "Professional dental photography app with patient privacy protection.",
+        "foundingDate": "2025"
+    }
+    </script>
+
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <nav class="site-header">
+        <div class="header-container">
+            <a href="index.html" class="brand">
+                <img src="images/aftersmile-icon.png" alt="AfterSmile icon" class="brand-icon">
+                <span class="brand-text">AfterSmile</span>
+            </a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="author-container">
+            <div class="author-header">
+                <div class="author-info">
+                    <h1>About AfterSmile</h1>
+                    <p class="author-title">Build Portfolios That Drive Growth</p>
+                    <p class="author-bio">AfterSmile helps dental professionals transform their best work into powerful marketing assets. We believe your smile transformations deserve to be seen, shared, and celebrated. Our app makes it effortless to capture, organize, and showcase the cases that attract premium patients and grow your practice.</p>
+                </div>
+            </div>
+
+            <div class="author-posts">
+                <h2>Recent Posts</h2>
+                <div id="author-blog-posts" class="blog-posts">
+                    <!-- Author's posts will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <nav class="footer-links">
+            <a href="blog/blog.html">Blog</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+            <a href="contact.html">Contact</a>
+            <a href="faq.html">FAQ</a>
+        </nav>
+        <p class="copyright">&copy; 2025 AfterSmile. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Load author's posts
+        const authorPosts = [
+            {
+                title: "The Portfolio Effect: Why Your Best Work Is Your Best Marketing",
+                date: "2025-01-22",
+                excerpt: "How visual proof increases case acceptance by up to 73% and attracts premium patients who say yes.",
+                url: "blog/posts/2025-01-22-portfolio-effect.html",
+                readTime: "2 min"
+            },
+            {
+                title: "5 Photography Secrets That Convert Consultations Into Cases",
+                date: "2025-01-20",
+                excerpt: "Simple techniques that transform good photos into powerful marketing assets that close deals.",
+                url: "blog/posts/2025-01-20-photography-secrets.html",
+                readTime: "2 min"
+            },
+            {
+                title: "Why Showing Beats Telling Every Time",
+                date: "2025-01-18",
+                excerpt: "The psychology behind visual proof and how it eliminates objections instantly.",
+                url: "blog/posts/2025-01-18-visual-proof-psychology.html",
+                readTime: "2 min"
+            },
+            {
+                title: "Build Your Portfolio in 30 Days: The Action Plan",
+                date: "2025-01-15",
+                excerpt: "A simple daily routine that creates a stunning portfolio attracting ideal patients.",
+                url: "blog/posts/2025-01-15-30-day-portfolio-plan.html",
+                readTime: "2 min"
+            },
+            {
+                title: "Turn Your Cases Into Social Media Growth",
+                date: "2025-01-12",
+                excerpt: "How to showcase transformations on Instagram and Facebook to build a waiting list of dream patients.",
+                url: "blog/posts/2025-01-12-social-media-growth.html",
+                readTime: "2 min"
+            }
+        ];
+
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        }
+
+        function renderAuthorPosts() {
+            const container = document.getElementById('author-blog-posts');
+
+            if (authorPosts.length === 0) {
+                container.innerHTML = '<p style="color: #666; text-align: center;">Blog posts coming soon.</p>';
+                return;
+            }
+
+            const sortedPosts = authorPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            const postsHTML = sortedPosts.map(post => `
+                <article class="blog-card">
+                    <h2><a href="${post.url}">${post.title}</a></h2>
+                    <div class="post-meta">
+                        <time datetime="${post.date}">${formatDate(post.date)}</time>
+                        <span class="reading-time">${post.readTime} read</span>
+                    </div>
+                    <p>${post.excerpt}</p>
+                    <a href="${post.url}" class="read-more">Read more →</a>
+                </article>
+            `).join('');
+
+            container.innerHTML = postsHTML;
+        }
+
+        document.addEventListener('DOMContentLoaded', renderAuthorPosts);
+    </script>
+
+</body>
+
+</html>
